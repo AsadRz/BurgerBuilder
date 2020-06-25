@@ -18,7 +18,7 @@ class Modal extends Component {
             opacity: this.props.show ? 1 : 0,
           }}
         >
-          {props.children}
+          {this.props.children}
         </div>
       </Aux>
     );
