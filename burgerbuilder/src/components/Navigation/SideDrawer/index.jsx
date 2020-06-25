@@ -5,6 +5,7 @@ import NavigationItems from "../NavigationItems";
 import Backdrop from "../../UI/Backdrop";
 import Aux from "../../../hoc/Auxilliary";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 const navItems = [
   {
@@ -37,6 +38,11 @@ const sideDrawer = (props) => {
       </div>
     </Aux>
   );
+};
+
+sideDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  closed: PropTypes.func.isRequired,
 };
 
 export default sideDrawer;
