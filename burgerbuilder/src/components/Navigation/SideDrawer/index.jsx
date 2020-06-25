@@ -3,7 +3,7 @@ import classes from "./style.module.css";
 import Logo from "../../UI/Logo";
 import NavigationItems from "../NavigationItems";
 import Backdrop from "../../UI/Backdrop";
-import Aux from "../../../hoc/Auxilliary/Auxilliary";
+import Aux from "../../../hoc/Auxilliary";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
