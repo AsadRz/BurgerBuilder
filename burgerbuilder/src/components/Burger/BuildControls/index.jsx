@@ -25,9 +25,7 @@ const buildControls = (props) => {
     <div className={classes.BuildControls}>
       <p>
         Current Price:
-        {' '}
-        <strong>{totalPrice.toFixed(2)}</strong>
-        $
+        <strong>{`${totalPrice.toFixed(2)} $`}</strong>
       </p>
       {controls.map((c) => (
         <BuildControl
@@ -50,12 +48,13 @@ const buildControls = (props) => {
 };
 
 buildControls.propTypes = {
-  totalPrice: PropTypes.string.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   ingredientsAdded: PropTypes.func.isRequired,
   ingredientsRemoved: PropTypes.func.isRequired,
   purchaseable: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  ordered: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  disabled: PropTypes.object.isRequired,
+  ordered: PropTypes.func.isRequired,
 };
 
 export default buildControls;

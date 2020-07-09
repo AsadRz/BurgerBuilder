@@ -5,26 +5,17 @@ import Aux from '../../../hoc/Auxilliary';
 import Button from '../../UI/Button';
 
 const orderSummary = (props) => {
-  const {
-    ingredients,
-    totalPrice,
-    purchaseCanceled,
-    purchaseContinue,
-  } = props;
+  const { ingredients, totalPrice, purchaseCanceled, purchaseContinue } = props;
   // this could be functional Component doesn't necassorily have to be class
-  const ingredientsSummary = Object.keys(ingredients).map(
-    (igKey) => {
-      return (
-        <li key={igKey}>
-          <span style={{ textTransform: 'capitalize' }}>
-            {igKey}
-            :
-            {ingredients[igKey]}
-          </span>
-        </li>
-      );
-    },
-  );
+  const ingredientsSummary = Object.keys(ingredients).map((igKey) => {
+    return (
+      <li key={igKey}>
+        <span style={{ textTransform: 'capitalize' }}>
+          {igKey}:{ingredients[igKey]}
+        </span>
+      </li>
+    );
+  });
 
   return (
     <Aux>
@@ -32,18 +23,13 @@ const orderSummary = (props) => {
       <p>Delicious Burger with following ingredients:</p>
       <ul>{ingredientsSummary}</ul>
       <p>
-        <strong>
-          Total Price:
-          {' '}
-          {totalPrice.toFixed(2)}
-          $
-        </strong>
+        <strong>Total Price: {totalPrice.toFixed(2)}$</strong>
       </p>
       <p>Continue to Checkout??</p>
-      <Button btnType="Danger" clicked={purchaseCanceled}>
+      <Button btnType='Danger' clicked={purchaseCanceled}>
         CANCEL
       </Button>
-      <Button btnType="Success" clicked={purchaseContinue}>
+      <Button btnType='Success' clicked={purchaseContinue}>
         CONTINUE
       </Button>
     </Aux>
@@ -51,8 +37,9 @@ const orderSummary = (props) => {
 };
 
 orderSummary.propTypes = {
-  ingredients: PropTypes.string.isRequired,
-  totalPrice: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  ingredients: PropTypes.object.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   purchaseCanceled: PropTypes.func.isRequired,
   purchaseContinue: PropTypes.func.isRequired,
 };

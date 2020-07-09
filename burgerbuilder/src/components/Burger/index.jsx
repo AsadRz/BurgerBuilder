@@ -13,7 +13,9 @@ const burger = (props) => {
     .map((igkey) =>
       [...Array(props.ingredients[igkey])].map((_, id) => (
         <BurgerIngredients key={igkey + id} type={igkey} />
-      ))).reduce((arr, el) => arr.concat(el), []);
+      )),
+    )
+    .reduce((arr, el) => arr.concat(el), []);
 
   if (transformedIngredients.length <= 0) {
     transformedIngredients = <p>Please start adding ingredients</p>;
@@ -22,15 +24,16 @@ const burger = (props) => {
 
   return (
     <div className={classes.Burger}>
-      <BurgerIngredients type="bread-top" />
+      <BurgerIngredients type='bread-top' />
       {transformedIngredients}
-      <BurgerIngredients type="bread-bottom" />
+      <BurgerIngredients type='bread-bottom' />
     </div>
   );
 };
 
 burger.propTypes = {
-  ingredients: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  ingredients: PropTypes.object.isRequired,
 };
 
 export default burger;
