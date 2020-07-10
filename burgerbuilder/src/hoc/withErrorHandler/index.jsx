@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 
 import Modal from '../../components/UI/Modal';
@@ -5,9 +6,13 @@ import Aux from '../Auxilliary';
 
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
-    state = {
-      error: null,
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        error: null,
+      };
+      this.errorConfirmedHandler = this.errorConfirmedHandler.bind(this);
+    }
 
     componentDidMount() {
       axios.interceptors.request.use((req) => {
@@ -19,23 +24,21 @@ const withErrorHandler = (WrappedComponent, axios) => {
         (res) => res,
         (error) => {
           //   console.log(error);
-          this.setState({ error: error });
+          this.setState({ error });
         },
       );
     }
 
-    errorConfirmedHandler = () => {
+    errorConfirmedHandler() {
       this.setState({ error: null });
-    };
+    }
 
     render() {
+      const { error } = this.state;
       return (
         <Aux>
-          <Modal
-            show={this.state.error}
-            modalClosed={this.errorConfirmedHandler}
-          >
-            {this.state.error ? this.state.error.message : null}
+          <Modal show={error} modalClosed={this.errorConfirmedHandler}>
+            {error ? error.message : null}
           </Modal>
           <WrappedComponent {...this.props} />
         </Aux>
