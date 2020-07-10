@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
 
@@ -12,21 +13,35 @@ const withErrorHandler = (WrappedComponent, axios) => {
         error: null,
       };
       this.errorConfirmedHandler = this.errorConfirmedHandler.bind(this);
+
+      /*
+       * setting interceptors in constructor
+       */
     }
 
-    componentDidMount() {
-      axios.interceptors.request.use((req) => {
+    componentWillMount() {
+      this.reqInterceptor = axios.interceptors.request.use((req) => {
         this.setState({ error: null });
         return req;
       });
 
-      axios.interceptors.response.use(
+      this.resInterceptor = axios.interceptors.response.use(
         (res) => res,
         (error) => {
           //   console.log(error);
           this.setState({ error });
         },
       );
+    }
+
+    componentWillUnmount() {
+      /*
+       * Removing Old Interceptops to prevent memory leakege as well as the errors that might occur
+       * Whenever component will be unmounted we remove the interceptors
+       */
+
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
     }
 
     errorConfirmedHandler() {
