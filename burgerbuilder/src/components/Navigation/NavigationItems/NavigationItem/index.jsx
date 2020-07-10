@@ -1,5 +1,5 @@
-import React from "react";
-import classes from "./style.module.css";
+import React from 'react';
+import classes from './style.module.css';
 
 const navigationItem = (props) =>
   props.navItems.map((item) => {
