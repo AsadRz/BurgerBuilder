@@ -13,7 +13,7 @@ class Checkout extends Component {
   // in checkoutSummary
   componentWillMount = () => {
     const query = new URLSearchParams(this.props.location.search);
-    // console.log(query);
+    //
     const ingredients = {};
     let price = 0;
     for (let param of query.entries()) {
@@ -23,9 +23,7 @@ class Checkout extends Component {
         ingredients[param[0]] = +param[1];
       }
     }
-    this.setState({ ingredients: ingredients, totalPrice: price }, () => {
-      console.log(this.state.ingredients);
-    });
+    this.setState({ ingredients: ingredients, totalPrice: price }, () => {});
   };
 
   checkoutCancelledHandler = () => {

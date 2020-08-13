@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props);
+    //
     axios
       .get('https://burger-builder-a4e40.firebaseio.com/ingredients.json')
       .then((response) => {
@@ -55,7 +55,7 @@ class BurgerBuilder extends Component {
   }
 
   addIngredientHandler = (type) => {
-    // console.log("in here");
+    //
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
     const updatedIngredients = { ...this.state.ingredients };
@@ -121,9 +121,9 @@ class BurgerBuilder extends Component {
 
     let orderSummary = null;
 
-    // console.log(this.state.loading);
+    //
 
-    // console.log(this.state.totalPrice);
+    //
 
     let burger = this.state.error ? (
       <p>Ingredients can't be loaded</p>

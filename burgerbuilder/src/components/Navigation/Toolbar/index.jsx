@@ -9,12 +9,12 @@ const navItems = [
   {
     value: 'Burger Builder',
     link: '/',
-    active: true,
+    exact: true,
   },
   {
-    value: 'Checkout',
-    link: '/',
-    active: false,
+    value: 'Orders',
+    link: '/orders',
+    exact: false,
   },
 ];
 
