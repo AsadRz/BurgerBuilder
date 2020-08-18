@@ -1,3 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable jsx-quotes */
+/* eslint-disable react/jsx-one-expression-per-line */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,7 +27,10 @@ const orderSummary = (props) => {
       <p>Delicious Burger with following ingredients:</p>
       <ul>{ingredientsSummary}</ul>
       <p>
-        <strong>Total Price: {totalPrice.toFixed(2)}$</strong>
+        <strong>
+          Total Price:
+          {totalPrice.toFixed(2)}$
+        </strong>
       </p>
       <p>Continue to Checkout??</p>
       <Button btnType='Danger' clicked={purchaseCanceled}>
@@ -37,7 +44,6 @@ const orderSummary = (props) => {
 };
 
 orderSummary.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   ingredients: PropTypes.object.isRequired,
   totalPrice: PropTypes.number.isRequired,
   purchaseCanceled: PropTypes.func.isRequired,

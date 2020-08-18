@@ -6,16 +6,17 @@ import React from 'react';
 import classes from './style.module.css';
 
 const order = (props) => {
-  const ingredients = [];
+  const { ingredients, price } = props;
+  const newIngredients = [];
 
-  for (const ingredientName in props.ingredients) {
-    ingredients.push({
+  for (const ingredientName in ingredients) {
+    newIngredients.push({
       name: ingredientName,
-      amount: props.ingredients[ingredientName],
+      amount: ingredients[ingredientName],
     });
   }
 
-  const ingredientOutput = ingredients.map((ig) => {
+  const ingredientOutput = newIngredients.map((ig) => {
     return (
       <span key={ig.name}>
         {ig.name}({ig.amount})
@@ -33,7 +34,7 @@ const order = (props) => {
         Price:
         <strong>
           USD
-          {props.price}
+          {price}
         </strong>
       </p>
     </div>

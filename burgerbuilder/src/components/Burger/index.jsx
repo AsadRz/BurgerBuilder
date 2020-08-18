@@ -1,3 +1,4 @@
+/* eslint-disable jsx-quotes */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-array-index-key */
 

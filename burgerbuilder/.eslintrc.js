@@ -18,6 +18,7 @@ module.exports = {
     'no-restricted-imports': 'off',
     'arrow-body-style': 'off',
     'react/button-has-type': 'off',
+
     // 'no-console': 'off',
   },
 };

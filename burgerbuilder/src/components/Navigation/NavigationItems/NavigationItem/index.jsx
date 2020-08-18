@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './style.module.css';
 
-const navigationItem = (props) =>
+const navigationItem = (props) => {
   props.navItems.map((item) => {
     return (
       <li className={classes.NavigationItem} key={item.value}>
@@ -16,5 +16,6 @@ const navigationItem = (props) =>
       </li>
     );
   });
+};
 
 export default navigationItem;
