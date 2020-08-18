@@ -71,7 +71,6 @@ input.propTypes = {
   elementType: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   invalid: PropTypes.bool,
-  shouldValidate: PropTypes.func.isRequired,
 };
 
 export default input;
