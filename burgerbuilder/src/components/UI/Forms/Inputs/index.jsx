@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/forbid-prop-types */
@@ -9,13 +11,18 @@ import classes from './style.module.css';
 
 const input = (props) => {
   let inputElement = null;
-  const { elementType, value } = props;
+  const inputClasses = [classes.InputElement];
+
+  const { elementType, value, invalid, shouldValidate } = props;
+  if (invalid && shouldValidate) {
+    inputClasses.push(classes.Invalid);
+  }
 
   switch (elementType) {
     case 'input':
       inputElement = (
         <input
-          className={classes.InputElement}
+          className={inputClasses.join(' ')}
           {...props.elementConfig}
           value={value}
           onChange={props.changed}
@@ -25,7 +32,7 @@ const input = (props) => {
     case 'textarea':
       inputElement = (
         <textarea
-          className={classes.InputElement}
+          className={inputClasses.join(' ')}
           {...props.elementConfig}
           value={value}
           onChange={props.changed}
@@ -35,7 +42,7 @@ const input = (props) => {
     case 'select':
       inputElement = (
         <select
-          className={classes.InputElement}
+          className={inputClasses.join(' ')}
           value={value}
           onChange={props.changed}
         >
@@ -63,5 +70,8 @@ const input = (props) => {
 input.propTypes = {
   elementType: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  invalid: PropTypes.bool,
+  shouldValidate: PropTypes.func.isRequired,
 };
+
 export default input;
