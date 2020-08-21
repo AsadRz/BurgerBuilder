@@ -25,7 +25,10 @@ const logger = (store) => {
 };
 
 // Adding enhance i-e applyMiddleware function from redux to store
-const store = createStore(reducer, applyMiddleware(logger));
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 const app = (
   <Provider store={store}>
     <BrowserRouter>
