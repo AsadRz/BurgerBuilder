@@ -16,6 +16,11 @@ const navItems = [
     link: '/orders',
     exact: false,
   },
+  {
+    value: 'Authenicate',
+    link: '/auth',
+    exact: false,
+  },
 ];
 
 const toolbar = (props) => {
